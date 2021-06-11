@@ -11,13 +11,13 @@ const mongoose = require('mongoose');
 
 // module.exports = mongoose.model('Frontend', FrontendSchema);
 
-
 const ProductSchema = new mongoose.Schema({
     title: String,
     url:String,
     description: String,
     activated: Boolean,
     author: String,
+    table: Array,
     createdOn: { type: Date, 'default': Date.now }
 });
 
