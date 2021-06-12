@@ -5,5 +5,6 @@ module.exports = {
   put_index: (backend) => Backend(backend).save(),
   post_index: (backend) => Backend.findByIdAndUpdate(backend._id, backend),
   get_activated: () =>
+    // eslint-disable-next-line implicit-arrow-linebreak
     Backend.find({ activated: true }, 'title description').lean()
 };

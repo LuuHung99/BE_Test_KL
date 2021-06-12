@@ -5,7 +5,8 @@ const Backend = require('../../model/resource');
 
 module.exports = {
   get_index: () => FuncLog.find().lean(),
-  put_index: (log) =>
+  put_index: (log) => {
+    console.log(log);
     FuncLog(log)
       .save()
       .then((l) => {
@@ -13,8 +14,10 @@ module.exports = {
         return Backend.findById(l.funcId);
       })
       .then((f) => {
+        // eslint-disable-next-line no-param-reassign
         f.activated = log.activated;
         return f.save();
-      }),
-  get_roleHistory: (log) => RoleHistory.find().lean()
+      });
+  },
+  get_roleHistory: () => RoleHistory.find().lean()
 };

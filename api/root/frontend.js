@@ -1,9 +1,16 @@
-const Frontend = require('../../model/frontend');
+const Product = require('../../model/frontend');
 
 module.exports = {
-  get_index: () => Frontend.find().lean(),
-  put_index: (frontend) => Frontend(frontend).save(),
-  post_index: (frontend) => Frontend.findByIdAndUpdate(frontend._id, frontend),
+  get_index: () => Product.find().lean(),
+  put_index: (product) => Product(product).save(),
+  post_index: (product) => {
+    console.log(product);
+    // Product.findByIdAndUpdate(product._id, { $set: product }).then((l) => {
+    //   console.log(l);
+    // });
+    // Frontend.updateOne({ _id: frontend._id }, frontend);
+  },
   get_activated: () =>
-    Frontend.find({ activated: true }, 'title description').lean(),
+    // eslint-disable-next-line implicit-arrow-linebreak
+    Product.find({ activated: true }, 'title description').lean()
 };

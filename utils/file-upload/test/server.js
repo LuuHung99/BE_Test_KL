@@ -62,7 +62,7 @@ const setup = (fileUploadOptions) => {
       .then(() => {
         res.json(fileData);
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).send(err);
       });
   });
@@ -75,7 +75,7 @@ const setup = (fileUploadOptions) => {
     if (!req.body) {
       return res.status(400).send('No request body found');
     }
-    
+
     const fields = ['firstName', 'lastName', 'email'];
     for (let i = 0; i < fields.length; i += 1) {
       if (!req.body[fields[i]] || !req.body[fields[i]].trim()) {
@@ -85,7 +85,9 @@ const setup = (fileUploadOptions) => {
 
     const testFile = req.files.testFile;
     const fileData = getUploadedFileData(testFile);
-    fields.forEach((field) => { fileData[field] = req.body[field]; });
+    fields.forEach((field) => {
+      fileData[field] = req.body[field];
+    });
 
     testFile.mv(fileData.uploadPath, (err) => {
       if (err) {
@@ -106,21 +108,21 @@ const setup = (fileUploadOptions) => {
       : res.status(200).send('Upload succeed');
   });
 
-  app.all('/upload/multiple', function(req, res) {
+  app.all('/upload/multiple', function (req, res) {
     if (!req.files) {
       return res.status(400).send('No files were uploaded.');
     }
 
     const fileNames = ['testFile1', 'testFile2', 'testFile3'];
-    
-    const testFiles = fileNames.map(file => req.files[file]);
+
+    const testFiles = fileNames.map((file) => req.files[file]);
     for (let i = 0; i < testFiles.length; i += 1) {
       if (!testFiles[i]) {
         return res.status(400).send(`${fileNames[i]} was not uploaded!`);
       }
     }
-    
-    const filesData = testFiles.map(file => getUploadedFileData(file));
+
+    const filesData = testFiles.map((file) => getUploadedFileData(file));
 
     testFiles[0].mv(filesData[0].uploadPath, (err) => {
       if (err) {
@@ -143,7 +145,7 @@ const setup = (fileUploadOptions) => {
     });
   });
 
-  app.all('/upload/array', function(req, res) {
+  app.all('/upload/array', function (req, res) {
     if (!req.files) {
       return res.status(400).send('No files were uploaded.');
     }
@@ -162,11 +164,10 @@ const setup = (fileUploadOptions) => {
       return res.status(400).send('Files array is empty');
     }
 
-    const filesData = testFiles.map(file => getUploadedFileData(file));
+    const filesData = testFiles.map((file) => getUploadedFileData(file));
 
     let uploadCount = 0;
     for (let i = 0; i < testFiles.length; i += 1) {
-
       testFiles[i].mv(filesData[i].uploadPath, (err) => {
         if (err) {
           return res.status(500).send(err);
@@ -180,7 +181,7 @@ const setup = (fileUploadOptions) => {
     }
   });
 
-  app.all('/fields/user', function(req, res) {
+  app.all('/fields/user', function (req, res) {
     if (!req.body) {
       return res.status(400).send('No request body found');
     }
@@ -199,7 +200,7 @@ const setup = (fileUploadOptions) => {
     });
   });
 
-  app.all('/fields/nested', function(req, res) {
+  app.all('/fields/nested', function (req, res) {
     if (!req.body) {
       return res.status(400).send('No request body found');
     }
@@ -218,7 +219,7 @@ const setup = (fileUploadOptions) => {
     });
   });
 
-  app.all('/fields/flattened', function(req, res) {
+  app.all('/fields/flattened', function (req, res) {
     if (!req.body) {
       return res.status(400).send('No request body found');
     }
@@ -242,7 +243,7 @@ const setup = (fileUploadOptions) => {
     });
   });
 
-  app.all('/fields/array', function(req, res) {
+  app.all('/fields/array', function (req, res) {
     if (!req.body) {
       return res.status(400).send('No request body found');
     }

@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const setRoutes = require('./setRoutes');
 const cors = require('cors');
-const morgan = require("morgan");
+const morgan = require('morgan');
+const setRoutes = require('./setRoutes');
 const config = require('./config');
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(cors());
 
 setRoutes(app, './api', true, 'api');
@@ -46,7 +46,6 @@ mongoose.connect(config.mongoUri, {
 });
 
 // To generate Admin account
-
 
 app.listen(config.port, () => {
   console.log(`App running on port ${config.port}`);
