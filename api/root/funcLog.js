@@ -6,7 +6,6 @@ const Backend = require('../../model/resource');
 module.exports = {
   get_index: () => FuncLog.find().lean(),
   put_index: (log) => {
-    console.log(log);
     FuncLog(log)
       .save()
       .then((l) => {
