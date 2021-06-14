@@ -7,7 +7,6 @@ module.exports = {
     console.log(product);
     // eslint-disable-next-line no-undef
     Product.findByIdAndUpdate(product._id, frontend);
-    // Frontend.updateOne({ _id: frontend._id }, frontend);
   },
   get_activated: () =>
     // eslint-disable-next-line implicit-arrow-linebreak
