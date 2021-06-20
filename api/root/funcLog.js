@@ -1,6 +1,6 @@
 const FuncLog = require('../../model/funcLog');
 const RoleHistory = require('../../model/roleHistory');
-const Frontend = require('../../model/frontend');
+const Frontend = require('../../model/tab');
 const Backend = require('../../model/resource');
 
 module.exports = {

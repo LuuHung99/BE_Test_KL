@@ -21,6 +21,7 @@ module.exports = {
     uploadConfig: {
       savedPath: '/uploaded'
     },
+    // eslint-disable-next-line camelcase
     func: (testField, _req_savedFiles) => {
       console.log(_req_savedFiles);
       return { testField, savedPaths: _req_savedFiles };
