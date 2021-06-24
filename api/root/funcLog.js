@@ -14,7 +14,7 @@ module.exports = {
         return Backend.findById(l.funcId);
       })
       .then((f) => {
-        // eslint-disable-next-line no-param-reassign
+        console.log(f);
         f.activated = log.activated;
         return f.save();
       });

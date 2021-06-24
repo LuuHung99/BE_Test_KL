@@ -2,7 +2,10 @@ const Tab = require('../../model/tab');
 
 module.exports = {
   get_index: () => Tab.find().lean(),
-  put_index: (tab) => Tab(tab).save(),
+  put_index: (tab) =>  {
+    Tab(tab).save()
+    console.log(tab);
+  } ,
   post_index: (tab) => {
     Tab.findByIdAndUpdate(tab._id, tab);
   },
