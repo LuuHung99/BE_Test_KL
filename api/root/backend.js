@@ -2,9 +2,12 @@ const Backend = require('../../model/resource');
 
 module.exports = {
   get_index: () => Backend.find().lean(),
-  put_index: (backend) => Backend(backend).save(),
+  put_index: (backend) => {
+    Backend(backend).save(),
+    console.log(backend);
+    
+  },
   post_index: (backend) => Backend.findByIdAndUpdate(backend._id, backend),
   get_activated: () =>
-    // eslint-disable-next-line implicit-arrow-linebreak
     Backend.find({ activated: true }, 'title description').lean()
 };

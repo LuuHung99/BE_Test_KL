@@ -13,13 +13,11 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.virtual('password')
-  // eslint-disable-next-line func-names
   .set(function (password) {
     this._password = password;
     this.salt = this.genSalt();
     this.hashedPass = this.hashPassword(password);
   })
-  // eslint-disable-next-line func-names
   .get(function () {
     return this._password;
   });

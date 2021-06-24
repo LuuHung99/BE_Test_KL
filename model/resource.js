@@ -2,18 +2,21 @@ const mongoose = require('mongoose');
 
 const ResourceSchema = new mongoose.Schema({
   title: String,
-  locationPath: {
-    type: String,
-    lowercase: true,
-    trim: true,
-    required: true
-  },
-  httpVerb: {
-    type: String,
-    uppercase: true,
-    trim: true,
-    required: true
-  },
+  locationPath: String,
+  
+  // locationPath: {
+  //   type: String,
+  //   lowercase: true,
+  //   trim: true,
+  //   required: true
+  // },
+  // httpVerb: {
+  //   type: String,
+  //   uppercase: true,
+  //   trim: true,
+  //   required: true
+  // },
+  httpVerb: String,
   api: Boolean,
   description: String,
   activated: Boolean,
