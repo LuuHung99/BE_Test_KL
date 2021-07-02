@@ -5,7 +5,7 @@ module.exports = {
   get_index: function () {
     return Role.find()
       .populate({
-        path: 'frontends',
+        path: 'tabs',
         match: { activated: true },
         select: 'title description'
       })

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const ResourceSchema = new mongoose.Schema({
   title: String,
   locationPath: String,
-  
   // locationPath: {
   //   type: String,
   //   lowercase: true,
