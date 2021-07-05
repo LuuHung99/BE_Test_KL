@@ -1,6 +1,6 @@
+const crypto = require('crypto');
 const User = require('../../model/user');
 const UserHistory = require('../../model/userHistory');
-const crypto = require('crypto');
 
 module.exports = {
   get_index: function () {

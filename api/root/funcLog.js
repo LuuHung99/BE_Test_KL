@@ -9,12 +9,10 @@ module.exports = {
     FuncLog(log)
       .save()
       .then((l) => {
-        console.log(l);
         if (log.funcType === 'frontend') return Frontend.findById(l.funcId);
         return Backend.findById(l.funcId);
       })
       .then((f) => {
-        console.log(f);
         f.activated = log.activated;
         return f.save();
       });

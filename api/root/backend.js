@@ -7,7 +7,6 @@ module.exports = {
   },
   post_index: (backend) => {
     Backend.findByIdAndUpdate(backend._id, backend);
-    console.log(backend);
   },
   get_activated: () =>
     Backend.find({ activated: true }, 'title description').lean()
