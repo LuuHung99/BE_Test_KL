@@ -6,7 +6,7 @@ module.exports = {
     Tab(tab).save()
   }, 
   post_index: (tab) => {
-    Tab.findByIdAndUpdate(tab._id, tab);
+    return Tab.findByIdAndUpdate(tab._id, tab);
   },
   get_activated: () => Tab.find({ activated: true,  }, 'title description').lean()
 };
