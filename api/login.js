@@ -18,6 +18,7 @@ module.exports = {
       match: { activated: true },
       select: '-_id title frontends'
     });
+    console.log(user);
     if (!user) throw new ServerError('Bad Request', 400);
     if (!user.authenticate(password))
       throw new ServerError('Unauthenticated', 401);
@@ -27,7 +28,7 @@ module.exports = {
       { expiresIn: '2h' }
     );
     user.salt = undefined;
-    user.hashedPass = undefined;
+    user.hashedPass = password;
     return { token, user };
   }
 };

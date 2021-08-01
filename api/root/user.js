@@ -27,7 +27,7 @@ module.exports = {
         user._id = u._id;
         user.createdOn = u.createdOn;
         user.activated = u.activated;
-
+        console.log(user);
         return UserHistory({
           roleId: u._id,
           type: 'Created',
@@ -38,6 +38,7 @@ module.exports = {
       .then((log) => {
         return user;
       });
+      
   },
   post_activate: function (userId, reason, activated, username) {
     return User.findById(userId)

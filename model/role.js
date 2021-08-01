@@ -4,7 +4,7 @@ const RoleSchema = new mongoose.Schema({
   title: String,
   activated: Boolean,
   description: String,
-  tabs: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Tab' }], //frontend
+  tabs: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Tab' }],
   backends: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Resource' }],
   createdOn: { type: Date, default: Date.now }
 });

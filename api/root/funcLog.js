@@ -9,13 +9,17 @@ module.exports = {
     FuncLog(log)
       .save()
       .then((l) => {
-        if (log.funcType === 'frontend') return Frontend.findById(l.funcId);
-        return Backend.findById(l.funcId);
+        if (log.funcType === 'frontend') {
+          return Frontend.findById(l.funcId);
+        } else {
+          return Backend.findById(l.funcId);
+        }
       })
       .then((f) => {
         f.activated = log.activated;
         return f.save();
       });
+      console.log(log);
   },
   get_roleHistory: () => RoleHistory.find().lean()
 };

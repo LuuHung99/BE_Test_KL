@@ -26,6 +26,8 @@ setRoutes(app, './controllers', false);
 // When successfully connected
 mongoose.connection.on('connected', () => {
   console.log('Mongodb is connected successfully');
+
+  // To generate Admin account
   // const genAdmin = require('./utils/generateAdmin');
   // genAdmin()
 });
@@ -45,7 +47,7 @@ mongoose.connect(config.mongoUri, {
   useUnifiedTopology: true
 });
 
-// To generate Admin account
+
 
 app.listen(config.port, () => {
   console.log(`App running on port ${config.port}`);
