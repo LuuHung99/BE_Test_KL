@@ -4,8 +4,8 @@ const Frontend = require('../../model/tab');
 const Backend = require('../../model/resource');
 
 module.exports = {
-  get_index: () => FuncLog.find().lean(),
-  put_index: (log) => {
+  u_get_index: () => FuncLog.find().lean(),
+  u_put_index: (log) => {
     FuncLog(log)
       .save()
       .then((l) => {
@@ -21,5 +21,5 @@ module.exports = {
       });
       console.log(log);
   },
-  get_roleHistory: () => RoleHistory.find().lean()
+  u_get_roleHistory: () => RoleHistory.find().lean()
 };

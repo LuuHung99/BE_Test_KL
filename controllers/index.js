@@ -4,14 +4,8 @@ const processIndex = (c = 5, a, b = 4, _app_secretKey) => ({
   a: 10,
   secret: _app_secretKey
 });
-function processIndexWithParams(
-  c = 5 /* first param */,
-  // second next param
-  a, /// nothongs
-  b = 4 /* second param */
-) {
-  console.log('index abc is executed');
-  return { c, a, b };
+function processIndexWithParams(c, a, b ) {
+  return { a: Number(b) + Number(c), b, c };
 }
 
 module.exports = {

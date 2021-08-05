@@ -17,7 +17,6 @@ function authenticate(token, secret) {
 
 async function auth(req, res, next) {
   const secret = req.app.get('secretKey');
-
   const token = req.headers.authorization
     ? req.headers.authorization.split(' ')[1]
     : '';

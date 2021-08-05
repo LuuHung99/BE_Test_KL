@@ -3,7 +3,7 @@ const User = require('../../model/user');
 const UserHistory = require('../../model/userHistory');
 
 module.exports = {
-  get_index: function () {
+  u_get_index: function () {
     return User.find({}, '-hashedPass -salt')
       .populate({
         path: 'roles',
@@ -12,7 +12,7 @@ module.exports = {
       })
       .lean();
   },
-  put_index: function (user, reason, username) {
+  u_put_index: function (user, reason, username) {
     var salt = crypto.randomBytes(128).toString('base64');
     var hashedPassword = crypto
       .createHmac('sha256', salt)
@@ -40,7 +40,7 @@ module.exports = {
       });
       
   },
-  post_activate: function (userId, reason, activated, username) {
+  u_post_activate: function (userId, reason, activated, username) {
     return User.findById(userId)
       .then((user) => {
         user.activated = activated;
@@ -55,7 +55,7 @@ module.exports = {
         }).save();
       });
   },
-  post_assignRole: function (user, reason, username) {
+  u_post_assignRole: function (user, reason, username) {
     return User.findByIdAndUpdate(user._id, user)
       .then((data) => {
         return UserHistory({

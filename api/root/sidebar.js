@@ -1,7 +1,7 @@
 const Sidebar = require('../../model/sidebar');
 
 module.exports = {
-  get_index: () => Sidebar.find().lean(),
+  u_get_index: () => Sidebar.find().lean(),
   // put_index: (sidebar) => {
   //   Sidebar(sidebar).save()
   // } ,
