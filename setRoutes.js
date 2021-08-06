@@ -7,12 +7,14 @@ function normalizeLocationPath(alias, locationPath) {
     nLocationPath = path.join(path.sep, nLocationPath);
   }
   nLocationPath = nLocationPath.split(path.sep).join('/');
+ 
   return nLocationPath;
 }
 
 function setRoutes(app, controllerPath, api, alias = '') {
   const routes = getRoutes(controllerPath, api);
   routes.forEach((route) => {
+    // console.log("route", route);
     console.log(
       `${route.httpVerb} on ${normalizeLocationPath(alias, route.locationPath)}`
     );

@@ -6,17 +6,17 @@ const User = require('../model/user');
 module.exports = {
   post_index: async function (username, password, _app_secretKey) {
     const user = await User.findOne(
-      { username: username }, // activated: true
-      // '-createdOn -activated'
+      { username: username, activated: true}, // activated: true
+      '-createdOn -activated'
     ).populate({
       path: 'roles',
       populate: {
         path: 'tabs',
-        // match: { activated: true },
-        // select: '-_id title url'
+        match: { activated: true },
+        select: '-_id title url'
       },
-      // match: { activated: true },
-      // select: '-_id title tabs'
+      match: { activated: true },
+      select: '-_id title tabs'
     });
     console.log(user);
     if (!user) throw new ServerError('Bad Request', 400);

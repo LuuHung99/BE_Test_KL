@@ -28,13 +28,16 @@ function getRoutes(cPath, api = true) {
             controller[endpoint].func &&
             typeof controller[endpoint].func === 'function')
         ) {
-          const { methodName, httpVerb, securityLevel } = parseEndPoint(
-            endpoint
-          );
+          const { methodName, httpVerb, securityLevel } =
+            parseEndPoint(endpoint);
+
+            // console.log(methodName, httpVerb, securityLevel);
 
           let viewPath = api ? false : endpoint;
+
           if (viewPath) {
             if (basePath) viewPath = `${basePath}/${endpoint}`;
+
             viewPath = viewPath
               .replace(/\/:/g, '-') // replace /:a/:b to -a-b
               .replace(/^\//, ''); // ensure viewPath is relative path
@@ -60,8 +63,10 @@ function getRoutes(cPath, api = true) {
           });
         }
       });
+     
     }
   });
+  // console.log("routes", routes);
 
   return routes.sort((a, b) => {
     if (a.locationPath.length > b.locationPath.length) return -1;

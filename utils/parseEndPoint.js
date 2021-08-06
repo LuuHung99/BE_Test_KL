@@ -1,6 +1,5 @@
 function parseEndPoint(endPoint) {
   const tmp = endPoint.split('_');
-  // console.log(tmp[1]);
   let methodName = endPoint;
   let httpVerb = 'get';
   let securityLevel = 0;

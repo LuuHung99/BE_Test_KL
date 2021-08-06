@@ -10,5 +10,7 @@ module.exports = {
   },
   u_get_activated: () =>
     Backend.find({ activated: true }, 'title description').lean(),
-  u_get_account: () => {return "Hello"}
+  get_tong: function tong(a,b) {
+    return {tong: a + b};
+  }
 };
